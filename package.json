@@ -4,6 +4,6 @@
   "id": "jid1-kJuBpCM0xasMPQ",
   "description": "Add Bugzilla links to a Github compare view.",
   "author": "Paul McLanahan",
-  "license": "Apache 2.0",
-  "version": "0.1"
+  "license": "MIT",
+  "version": "0.2"
 }
