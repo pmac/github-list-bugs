@@ -37,32 +37,35 @@ function getBugLinks(){
 }
 
 
-var bugsListContainer = document.createElement('p');
-bugsListContainer.className = 'subtext';
-bugsListContainer.appendChild(document.createTextNode('Bugs in commits ('));
+function createBugsList(){
+    var bugsListContainer = document.createElement('p');
+    bugsListContainer.className = 'subtext';
+    bugsListContainer.appendChild(document.createTextNode('Bugs in commits ('));
 
-var openAll = document.createElement('a');
-openAll.href = '#';
-openAll.id = 'open_all_bugzilla_links';
-openAll.appendChild(document.createTextNode('open all'));
-openAll.addEventListener('click', function(e){
-    e.preventDefault();
-    var elements = this.parentNode.getElementsByClassName('bugzilla_link')
-    Array.prototype.forEach.call(elements, function(el){
-        window.open(el.href);
+    var openAll = document.createElement('a');
+    openAll.href = '#';
+    openAll.id = 'open_all_bugzilla_links';
+    openAll.appendChild(document.createTextNode('open all'));
+    openAll.addEventListener('click', function(e){
+        e.preventDefault();
+        var elements = this.parentNode.getElementsByClassName('bugzilla_link')
+        Array.prototype.forEach.call(elements, function(el){
+            window.open(el.href);
+        });
+    }, false);
+    bugsListContainer.appendChild(openAll);
+    bugsListContainer.appendChild(document.createTextNode('): '));
+
+    var separator = document.createTextNode(', ');
+    getBugLinks().forEach(function(bugLink, i){
+        if (i > 0) {
+            bugsListContainer.appendChild(separator.cloneNode(false));
+        }
+        bugsListContainer.appendChild(bugLink);
     });
-}, false);
-bugsListContainer.appendChild(openAll);
-bugsListContainer.appendChild(document.createTextNode('): '));
+}
 
-var separator = document.createTextNode(', ');
-getBugLinks().forEach(function(bugLink, i){
-    if (i > 0) {
-        bugsListContainer.appendChild(separator.cloneNode(false));
-    }
-    bugsListContainer.appendChild(bugLink);
-});
 
 var parentElement = document.getElementById('js-repo-pjax-container');
-parentElement.insertBefore(bugsListContainer,
+parentElement.insertBefore(createBugsList(),
     parentElement.getElementsByClassName('subtext')[0].nextSibling);
