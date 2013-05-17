@@ -63,9 +63,11 @@ function createBugsList(){
         }
         bugsListContainer.appendChild(bugLink);
     });
+
+    return bugsListContainer;
 }
 
 
 var parentElement = document.getElementById('js-repo-pjax-container');
-parentElement.insertBefore(createBugsList(),
-    parentElement.getElementsByClassName('subtext')[0].nextSibling);
+var insertBeforeEl = parentElement.getElementsByClassName('subtext')[0].nextSibling;
+parentElement.insertBefore(createBugsList(), insertBeforeEl);
