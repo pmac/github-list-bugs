@@ -69,5 +69,5 @@ function createBugsList(){
 
 
 var parentElement = document.getElementById('js-repo-pjax-container');
-var insertBeforeEl = parentElement.getElementsByClassName('subtext')[0].nextSibling;
+var insertBeforeEl = document.getElementById('commits_bucket');
 parentElement.insertBefore(createBugsList(), insertBeforeEl);
