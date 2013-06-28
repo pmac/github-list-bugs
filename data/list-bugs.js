@@ -2,7 +2,7 @@
 
 
 var bugRe = /\b(ticket|bug|tracker item|issue)s?:? *([\d ,\+&#and]+)\b/i;
-var bugURL = 'https://bugzilla.mozilla.org/show_bug.cgi?id=';
+var bugURL = 'https://bugzil.la/';
 
 
 function getBugIds() {
