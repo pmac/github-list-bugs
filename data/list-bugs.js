@@ -2,11 +2,12 @@
 
 
 var bugRe = /\b(ticket|bug|tracker item|issue)s?:? *([\d ,\+&#and]+)\b/i;
-var bugURL = 'https://bugzil.la/';
+var bugURL = 'https://bugzilla.mozilla.org/show_bug.cgi?id=';
+var bugListURL = 'https://bugzilla.mozilla.org/buglist.cgi?bug_id=';
+var bugIds = [];
 
 
-function getBugIds() {
-    let bugIds = [];
+(function getBugIds() {
     let elements = document.querySelectorAll('a.message, div.commit-desc pre');
     Array.prototype.forEach.call(elements, function(el){
         let match = bugRe.exec(el.textContent);
@@ -18,14 +19,10 @@ function getBugIds() {
             })
         }
     });
-
-    return bugIds;
-}
+})();
 
 
 function getBugLinks(){
-    let bugIds = getBugIds();
-
     return bugIds.map(function(k){
         let bugLink = document.createElement('a');
         bugLink.href = bugURL + k;
@@ -43,16 +40,10 @@ function createBugsList(){
     bugsListContainer.appendChild(document.createTextNode('Bugs in commits ('));
 
     var openAll = document.createElement('a');
-    openAll.href = '#';
+    openAll.href = bugListURL + bugIds.join(',');
     openAll.id = 'open_all_bugzilla_links';
+    openAll.target = '_blank';
     openAll.appendChild(document.createTextNode('open all'));
-    openAll.addEventListener('click', function(e){
-        e.preventDefault();
-        var elements = this.parentNode.getElementsByClassName('bugzilla_link')
-        Array.prototype.forEach.call(elements, function(el){
-            window.open(el.href);
-        });
-    }, false);
     bugsListContainer.appendChild(openAll);
     bugsListContainer.appendChild(document.createTextNode('): '));
 
