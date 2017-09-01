@@ -1,4 +1,4 @@
-Copyright 2013 Paul McLanahan
+Copyright 2017 Paul McLanahan
 http://pmac.io/
 
 Permission is hereby granted, free of charge, to any person obtaining

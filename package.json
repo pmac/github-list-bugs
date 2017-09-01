@@ -1,9 +1,0 @@
-{
-  "name": "github-list-bugs",
-  "fullName": "Github List Bugzilla Bugs",
-  "id": "jid1-kJuBpCM0xasMPQ",
-  "description": "Add Bugzilla links to a Github compare view.",
-  "author": "Paul McLanahan",
-  "license": "MIT",
-  "version": "0.6"
-}

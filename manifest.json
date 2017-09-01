@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "github-list-bugs",
+    "version": "1.0",
+    "description": "Add Bugzilla links to a Github compare view.",
+    "icons": {
+        "48": "icons/github-list-bugs-48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://github.com/*/*/compare/*"
+            ],
+            "js": [
+                "list-bugs.js"
+            ]
+        }
+    ]
+}
